@@ -1,0 +1,12 @@
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\bin\Debug\net5.0\Microservices.Shared.deps.json
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\bin\Debug\net5.0\Microservices.Shared.dll
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\bin\Debug\net5.0\ref\Microservices.Shared.dll
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\bin\Debug\net5.0\Microservices.Shared.pdb
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\obj\Debug\net5.0\Microservices.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\obj\Debug\net5.0\Microservices.Shared.AssemblyInfoInputs.cache
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\obj\Debug\net5.0\Microservices.Shared.AssemblyInfo.cs
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\obj\Debug\net5.0\Microservices.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\obj\Debug\net5.0\Microservices.Shared.dll
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\obj\Debug\net5.0\ref\Microservices.Shared.dll
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\obj\Debug\net5.0\Microservices.Shared.pdb
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\obj\Debug\net5.0\Microservices.Shared.csproj.AssemblyReference.cache
