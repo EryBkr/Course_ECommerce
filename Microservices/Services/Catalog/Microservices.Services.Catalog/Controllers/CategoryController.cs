@@ -2,6 +2,7 @@
 using Microservices.Services.Catalog.Models;
 using Microservices.Services.Catalog.Services.Abstract;
 using Microservices.Shared.BaseClasses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,6 +23,8 @@ namespace Microservices.Services.Catalog.Controllers
             _categoryService = categoryService;
         }
 
+
+      
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {

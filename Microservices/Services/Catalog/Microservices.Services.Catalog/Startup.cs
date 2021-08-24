@@ -1,18 +1,23 @@
+using Microservices.Services.Catalog.AuthSettings;
 using Microservices.Services.Catalog.Services.Abstract;
 using Microservices.Services.Catalog.Services.Concrete;
 using Microservices.Services.Catalog.Settings;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Microservices.Services.Catalog
@@ -37,17 +42,50 @@ namespace Microservices.Services.Catalog
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ICourseService, CourseService>();
 
-            services.AddControllers();
+            //Bütün Controller a Authorize attribute 'ni eklemiþ oldum
+            services.AddControllers(opt=> 
+            {
+                opt.Filters.Add(new AuthorizeFilter());
+            });
 
             //appsettings ayarlarýmý modele bind ediyorum
             services.Configure<DatabaseSettings>(Configuration.GetSection("DatabaseSettings"));
 
-            //Yapýcý metotlarda artýk IOptions tanýmlamayla uðraþmama gerek yok interface üzerinden deðerlere direkt ulaþabileceðim
+            //OptionPattern i kullanarak appsettings.json daki tokenOptions bilgilerini aldým
+            var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
+
+            //Yapýcý metotlarda artýk IOptions tanýmlamayla uðraþmama gerek yok interface üzerinden deðerlere direkt ulaþabileceðim (Geliþmiþ option pattern)
             services.AddSingleton<IDatabaseSettings>(sp =>
             {
                 return sp.GetRequiredService<IOptions<DatabaseSettings>>().Value;
             });
+            services.AddSingleton<TokenOptions>(sp =>
+            {
+                return sp.GetRequiredService<IOptions<TokenOptions>>().Value;
+            });
 
+
+            //JWT Bearer ý ekliyorum
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; //Þema Ýsmi belirlendi
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; //JWT þemasý ile baðladým.Onu aþaðýda tanýmladým
+            }).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
+            {
+                //Jwt özelliklerini belirliyorum
+                opt.TokenValidationParameters = new TokenValidationParameters
+                {
+                    //Key i verdik
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenOptions.SecurityKey)),
+                    ValidIssuer = tokenOptions.Issuer,
+                    ValidAudience = tokenOptions.Audience,//Buna istek yapabilmesi için buna ait auidence bilgisinin tokene verilmiþ olmasý gerekir.
+                    ValidateIssuerSigningKey = true,//Ýmza doðrulanmalý
+                    ValidateAudience = true,//Audience kontrol edilsin
+                    ValidateIssuer = true,//Issuer  i de doðrula
+                    ValidateLifetime = true,//Yaþam ömrü de kontrol edilsin
+                    ClockSkew = TimeSpan.Zero //Sunucu Time Zone farklýlýðýndan dolayý default olarak 5 dk ekliyor son zamana.Bunu iptal ediyoruz
+                };
+            });
 
 
             services.AddSwaggerGen(c =>
@@ -68,7 +106,8 @@ namespace Microservices.Services.Catalog
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication(); //Kimlik
+            app.UseAuthorization(); //Yetkilendirme
 
             app.UseEndpoints(endpoints =>
             {
