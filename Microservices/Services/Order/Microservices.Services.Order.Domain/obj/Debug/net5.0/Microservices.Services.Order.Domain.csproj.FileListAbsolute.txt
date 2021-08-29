@@ -1,0 +1,15 @@
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\bin\Debug\net5.0\Microservices.Services.Order.Domain.deps.json
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\bin\Debug\net5.0\Microservices.Services.Order.Domain.dll
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\bin\Debug\net5.0\ref\Microservices.Services.Order.Domain.dll
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\bin\Debug\net5.0\Microservices.Services.Order.Domain.pdb
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\bin\Debug\net5.0\Microservices.Services.Order.Domain.Core.dll
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\bin\Debug\net5.0\Microservices.Services.Order.Domain.Core.pdb
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\obj\Debug\net5.0\Microservices.Services.Order.Domain.csproj.AssemblyReference.cache
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\obj\Debug\net5.0\Microservices.Services.Order.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\obj\Debug\net5.0\Microservices.Services.Order.Domain.AssemblyInfoInputs.cache
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\obj\Debug\net5.0\Microservices.Services.Order.Domain.AssemblyInfo.cs
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\obj\Debug\net5.0\Microservices.Services.Order.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\obj\Debug\net5.0\Microservices.Services.Order.Domain.csproj.CopyComplete
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\obj\Debug\net5.0\Microservices.Services.Order.Domain.dll
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\obj\Debug\net5.0\ref\Microservices.Services.Order.Domain.dll
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain\obj\Debug\net5.0\Microservices.Services.Order.Domain.pdb

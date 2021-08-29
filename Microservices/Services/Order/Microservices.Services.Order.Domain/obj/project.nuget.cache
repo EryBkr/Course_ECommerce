@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "gxArhz7JC3sYmwhmzIaGAtAmQ8Bh7mO8RI5CI5xoQmZIssUrJ9MBeyIkuSjXX1icJVW2JZOtM7/jUVuKl6Y4uw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain\\Microservices.Services.Order.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Blackerback\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
+    "C:\\Users\\Blackerback\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
+    "C:\\Users\\Blackerback\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.0.0\\microsoft.extensions.dependencyinjection.abstractions.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

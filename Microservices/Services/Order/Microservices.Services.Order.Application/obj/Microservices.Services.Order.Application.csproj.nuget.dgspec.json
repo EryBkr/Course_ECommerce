@@ -1,0 +1,352 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Application\\Microservices.Services.Order.Application.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Application\\Microservices.Services.Order.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Application\\Microservices.Services.Order.Application.csproj",
+        "projectName": "Microservices.Services.Order.Application",
+        "projectPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Application\\Microservices.Services.Order.Application.csproj",
+        "packagesPath": "C:\\Users\\Blackerback\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Blackerback\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain\\Microservices.Services.Order.Domain.csproj": {
+                "projectPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain\\Microservices.Services.Order.Domain.csproj"
+              },
+              "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Infrastructure\\Microservices.Services.Order.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Infrastructure\\Microservices.Services.Order.Infrastructure.csproj"
+              },
+              "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Shared\\Microservices.Shared\\Microservices.Shared.csproj": {
+                "projectPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Shared\\Microservices.Shared\\Microservices.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain.Core\\Microservices.Services.Order.Domain.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain.Core\\Microservices.Services.Order.Domain.Core.csproj",
+        "projectName": "Microservices.Services.Order.Domain.Core",
+        "projectPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain.Core\\Microservices.Services.Order.Domain.Core.csproj",
+        "packagesPath": "C:\\Users\\Blackerback\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Blackerback\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain\\Microservices.Services.Order.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain\\Microservices.Services.Order.Domain.csproj",
+        "projectName": "Microservices.Services.Order.Domain",
+        "projectPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain\\Microservices.Services.Order.Domain.csproj",
+        "packagesPath": "C:\\Users\\Blackerback\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Blackerback\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain.Core\\Microservices.Services.Order.Domain.Core.csproj": {
+                "projectPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain.Core\\Microservices.Services.Order.Domain.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Infrastructure\\Microservices.Services.Order.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Infrastructure\\Microservices.Services.Order.Infrastructure.csproj",
+        "projectName": "Microservices.Services.Order.Infrastructure",
+        "projectPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Infrastructure\\Microservices.Services.Order.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Blackerback\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Blackerback\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain\\Microservices.Services.Order.Domain.csproj": {
+                "projectPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Services\\Order\\Microservices.Services.Order.Domain\\Microservices.Services.Order.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Shared\\Microservices.Shared\\Microservices.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Shared\\Microservices.Shared\\Microservices.Shared.csproj",
+        "projectName": "Microservices.Shared",
+        "projectPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Shared\\Microservices.Shared\\Microservices.Shared.csproj",
+        "packagesPath": "C:\\Users\\Blackerback\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Blackerback\\OneDrive\\Masaüstü\\MicroservicesArc\\Microservices\\Shared\\Microservices.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Blackerback\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
