@@ -5,6 +5,8 @@ C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Application\bin\Debug\net5.0\Microservices.Services.Order.Domain.Core.dll
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Application\bin\Debug\net5.0\Microservices.Services.Order.Domain.dll
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Application\bin\Debug\net5.0\Microservices.Services.Order.Infrastructure.dll
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Application\bin\Debug\net5.0\Microservices.Shared.dll
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Application\bin\Debug\net5.0\Microservices.Shared.pdb
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Application\bin\Debug\net5.0\Microservices.Services.Order.Domain.pdb
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Application\bin\Debug\net5.0\Microservices.Services.Order.Infrastructure.pdb
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Application\bin\Debug\net5.0\Microservices.Services.Order.Domain.Core.pdb
@@ -17,5 +19,3 @@ C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Application\obj\Debug\net5.0\Microservices.Services.Order.Application.dll
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Application\obj\Debug\net5.0\ref\Microservices.Services.Order.Application.dll
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Application\obj\Debug\net5.0\Microservices.Services.Order.Application.pdb
-C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Application\bin\Debug\net5.0\Microservices.Shared.dll
-C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Application\bin\Debug\net5.0\Microservices.Shared.pdb
