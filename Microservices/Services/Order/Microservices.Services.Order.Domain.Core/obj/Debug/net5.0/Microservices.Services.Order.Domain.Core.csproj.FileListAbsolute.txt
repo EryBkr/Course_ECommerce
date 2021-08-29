@@ -9,4 +9,3 @@ C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain.Core\obj\Debug\net5.0\Microservices.Services.Order.Domain.Core.dll
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain.Core\obj\Debug\net5.0\ref\Microservices.Services.Order.Domain.Core.dll
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain.Core\obj\Debug\net5.0\Microservices.Services.Order.Domain.Core.pdb
-C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Services\Order\Microservices.Services.Order.Domain.Core\obj\Debug\net5.0\Microservices.Services.Order.Domain.Core.csproj.AssemblyReference.cache
