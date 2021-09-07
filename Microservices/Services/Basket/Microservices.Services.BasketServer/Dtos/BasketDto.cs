@@ -10,6 +10,7 @@ namespace Microservices.Services.BasketServer.Dtos
     {
         public string UserId { get; set; }
         public string DiscountCode { get; set; }
+        public int? DiscountRate { get; set; } //İndirim Oranı
         public List<BasketItemDto> BasketItems { get; set; }
 
         //Toplam fiyatı model üzerinden aldık

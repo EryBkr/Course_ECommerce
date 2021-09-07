@@ -11,6 +11,6 @@ namespace Microservices.Services.Order.Application.Dtos
         public string ProductId { get;  set; } //CourseId
         public string ProductName { get;  set; }
         public string PictureUrl { get;  set; }
-        public Decimal Price { get;  set; }
+        public decimal Price { get;  set; }
     }
 }

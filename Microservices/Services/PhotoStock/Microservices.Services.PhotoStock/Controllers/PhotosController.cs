@@ -31,7 +31,7 @@ namespace Microservices.Services.PhotoStock.Controllers
                     await photo.CopyToAsync(stream, cancellationToken);
 
                 //Dosyanın path ini dönüyorum (domain bağımsız)
-                var returnPath = "photos/" + photo.FileName;
+                var returnPath = photo.FileName;
 
                 //Dönüş modelimiz oluşturuldu
                 var photoDto = new PhotoDto { Url = returnPath };
@@ -45,7 +45,7 @@ namespace Microservices.Services.PhotoStock.Controllers
         }
 
         //Fotoğraf silme işlemi
-        [HttpGet]
+        [HttpDelete]
         public IActionResult PhotoDelete(string photoUrl)
         {
             var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/photos", photoUrl);

@@ -1,4 +1,5 @@
-﻿using Microservices.Shared.BaseClasses;
+﻿using Microservices.Services.PaymentService.Models;
+using Microservices.Shared.BaseClasses;
 using Microservices.Shared.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ namespace Microservices.Services.PaymentService.Controllers
     {
         //Deneme amaçlı oluşturulmuştur.Sanal Pos Entegrasyonu yapılmamıştır
         [HttpPost]
-        public IActionResult ReceivePayment()
+        public IActionResult ReceivePayment(PaymentDto model)
         {
             return CreateActionResultInstance<NoContent>(Response<NoContent>.Success(200));
         }

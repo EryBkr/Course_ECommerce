@@ -46,7 +46,7 @@ namespace Microservices.Services.Order.Application.Handlers
             await _context.SaveChangesAsync();
 
             //Oluşan Order in Id sini geri dönüyoruz
-            return Response<CreatedOrderDto>.Success(new CreatedOrderDto { OrderId = newOrder.Id }, 204);
+            return Response<CreatedOrderDto>.Success(new CreatedOrderDto { OrderId = newOrder.Id }, 200);
         }
     }
 }

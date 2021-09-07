@@ -15,7 +15,7 @@ namespace Microservices.Services.DiscountServer.Controllers
     [ApiController]
     public class DiscountController : CustomBaseController
     {
-        //Token dan userId depğerini alma
+        //Token dan userId değerini alma
         private readonly ISharedIdentityService _identityService;
 
         //Dapper ile Postgre bağlantısı
@@ -43,11 +43,12 @@ namespace Microservices.Services.DiscountServer.Controllers
 
 
         //Kullanıcı Id si ve Code değeriyle eşleşen kod
-        [Route("/api/[controller]/GetByCode/{code}")]
+        [Route("/api/[controller]/[action]/{code}")]
         [HttpGet]
         public async Task<IActionResult> GetByUserIdAndCode(string code)
         {
-            return CreateActionResultInstance(await _discountService.GetByCodeAndUserId(code, _identityService.GetUserId));
+            var discountResponse = await _discountService.GetByCodeAndUserId(code, _identityService.GetUserId);
+            return CreateActionResultInstance(discountResponse);
         }
 
         [HttpPost]

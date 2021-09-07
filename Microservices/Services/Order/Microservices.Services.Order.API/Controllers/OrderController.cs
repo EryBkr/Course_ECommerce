@@ -46,7 +46,6 @@ namespace Microservices.Services.Order.API.Controllers
         {
             //Gelen Tip e göre de farklı Handler çalışacaktır
             var response = await _mediator.Send(model);
-
             return CreateActionResultInstance(response);
         }
 

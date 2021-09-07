@@ -9,3 +9,4 @@ C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\M
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\obj\Debug\net5.0\Microservices.Shared.dll
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\obj\Debug\net5.0\ref\Microservices.Shared.dll
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\obj\Debug\net5.0\Microservices.Shared.pdb
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Shared\Microservices.Shared\obj\Debug\net5.0\Microservices.Shared.csproj.AssemblyReference.cache

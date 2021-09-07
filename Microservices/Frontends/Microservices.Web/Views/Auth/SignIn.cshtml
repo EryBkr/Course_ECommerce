@@ -1,0 +1,32 @@
+﻿@model SignInInput
+
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Üye Girişi</h5>
+                @*Servis taraflı hatalar burada gözükecek*@
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <form asp-controller="Auth" asp-action="SignIn" method="post">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label" asp-for="Email"></label>
+                        <input type="email" value="crazyeray94@gmail.com" asp-for="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <span class="text-danger" asp-validation-for="Email"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label" asp-for="Password"></label>
+                        <input type="password" value="Password123*" asp-for="Password" class="form-control" id="exampleInputPassword1">
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" asp-for="IsRemember" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1" asp-for=" IsRemember"></label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

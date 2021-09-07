@@ -1,0 +1,32 @@
+﻿@model Response<UserDto>
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Kullanıcı Bilgileri</h5>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Kullanıcı Adı</th>
+                        <td>@Model.Data.UserName</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>@Model.Data.Email</td>
+                    </tr>
+                    <tr>
+                        <th>Şehir</th>
+                        <td>@Model.Data.City</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="list-group">
+            <a asp-controller="Catalog" asp-action="Index" class="list-group-item list-group-item-action" aria-current="true">
+                Kurslarım
+            </a>
+        </div>
+    </div>
+</div>

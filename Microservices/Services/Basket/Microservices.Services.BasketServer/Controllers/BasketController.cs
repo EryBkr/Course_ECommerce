@@ -37,6 +37,10 @@ namespace Microservices.Services.BasketServer.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveOrUpdateBasket(BasketDto basketDto)
         {
+            //Header daki User Id yi direkt atadık
+            basketDto.UserId = _identityService.GetUserId;
+
+
             //Sepete ürün ekleme işlemi
             var response = await _basketService.SaveOrUpdate(basketDto);
             return CreateActionResultInstance(response);

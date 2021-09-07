@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CourseViewModel>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Kurslar</h5>
+                <a asp-action="Create" asp-controller="Catalog" class="btn btn-primary mb-3">Kurs Ekle</a>
+                @if (Model.Any())
+                {
+                    <table class="table table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Resim</th>
+                                <th>İsim</th>
+                                <th>Fiyat</th>
+                                <th>Süre</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><img src="@item.StockPictureUrl" class="img-thumbnail" style="width:72px;" alt="Alternate Text" /></td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Price</td>
+                                    <td>@item.Feature.Duration</td>
+                                    <td>
+                                        <a class="btn btn-success btn-sm" asp-action="Update" asp-route-id="@item.Id">Güncelle</a>
+                                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-info">Kayıtlı bir kurs bulunamadı</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

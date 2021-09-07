@@ -46,7 +46,7 @@ namespace Microservices.Services.Catalog.Controllers
 
 
         [HttpGet]
-        [Route("/api/[controller]/GetAllByUserId/{id}")]
+        [Route("/api/[controller]/GetAllByUserId/{userId}")]
         public async Task<IActionResult> GetAllByUserId(string userId)
         {
             var response = await _courseService.GetAllByUserIdAsync(userId);

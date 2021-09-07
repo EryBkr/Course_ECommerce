@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CourseViewModel>
+
+<h2>Kurslar</h2>
+<hr />
+
+<div class="row">
+
+    @if (Model.Any())
+    {
+
+        @foreach (var course in Model)
+        {
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="@course.StockPictureUrl" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@course.Name</h5>
+                        <span class="badge bg-primary">@course.Category.Name</span>
+                        <p class="card-text">@course.ShortDescription</p>
+                        <h4 class="text-primary">@course.Price TL</h4>
+                        <a asp-action="Detail" asp-route-id="@course.Id" class="btn btn-success">Detay</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    }
+    else
+    {
+        <div class="alert alert-info">
+            Üzgünüz Kurs Bulunamadı
+        </div>
+    }
+</div>
+
