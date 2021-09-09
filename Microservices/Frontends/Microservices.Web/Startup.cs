@@ -2,6 +2,7 @@
 using Microservices.Shared.Services.Abstract;
 using Microservices.Shared.Services.Concrete;
 using Microservices.Web.Extensions;
+using Microservices.Web.Filters;
 using Microservices.Web.Handler;
 using Microservices.Web.Helpers;
 using Microservices.Web.Services.Abstract;
@@ -35,7 +36,11 @@ namespace Microservices.Web
         public void ConfigureServices(IServiceCollection services)
         {
             //Fluent Validation Eklendi
-            services.AddControllersWithViews().AddFluentValidation(fv=>fv.RegisterValidatorsFromAssemblyContaining<CourseCreateInputValidator>());
+            services.AddControllersWithViews(opt =>
+            {
+                //UnAuth hatası fırlattıysak kullanıcıya çıkış işlemi yaptırıp login olmaya zorluyoruz
+                opt.Filters.Add<UserTokenHandlerExceptionFilter>();
+            }).AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CourseCreateInputValidator>());
 
             //In memory cache kullanımı için ekledik
             services.AddMemoryCache();
@@ -69,7 +74,7 @@ namespace Microservices.Web
             //HTTP DI larını Extension Class içerisinde tanımladık
             services.AddHttpClientServices(Configuration);
 
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

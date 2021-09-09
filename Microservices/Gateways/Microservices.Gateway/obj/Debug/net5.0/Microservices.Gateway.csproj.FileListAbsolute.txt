@@ -24,7 +24,6 @@ C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Gateways
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Gateways\Microservices.Gateway\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Gateways\Microservices.Gateway\bin\Debug\net5.0\Ocelot.dll
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Gateways\Microservices.Gateway\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Gateways\Microservices.Gateway\obj\Debug\net5.0\Microservices.Gateway.csproj.AssemblyReference.cache
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Gateways\Microservices.Gateway\obj\Debug\net5.0\Microservices.Gateway.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Gateways\Microservices.Gateway\obj\Debug\net5.0\Microservices.Gateway.AssemblyInfoInputs.cache
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Gateways\Microservices.Gateway\obj\Debug\net5.0\Microservices.Gateway.AssemblyInfo.cs
@@ -40,3 +39,4 @@ C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Gateways
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Gateways\Microservices.Gateway\obj\Debug\net5.0\ref\Microservices.Gateway.dll
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Gateways\Microservices.Gateway\obj\Debug\net5.0\Microservices.Gateway.pdb
 C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Gateways\Microservices.Gateway\obj\Debug\net5.0\Microservices.Gateway.genruntimeconfig.cache
+C:\Users\Blackerback\OneDrive\Masaüstü\MicroservicesArc\Microservices\Gateways\Microservices.Gateway\obj\Debug\net5.0\Microservices.Gateway.csproj.AssemblyReference.cache

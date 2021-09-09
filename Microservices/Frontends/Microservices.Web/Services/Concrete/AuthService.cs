@@ -158,7 +158,6 @@ namespace Microservices.Web.Services.Concrete
             //Cookie çıkış işleminide gerçekleştiriyoruz
             await _httpAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
-
             return resultModel;
         }
 
