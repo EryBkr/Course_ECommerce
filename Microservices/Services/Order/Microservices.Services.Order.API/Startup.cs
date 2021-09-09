@@ -1,25 +1,23 @@
+using MassTransit;
+using MassTransit.MultiBus;
 using MediatR;
 using Microservices.Services.Order.API.Settings;
+using Microservices.Services.Order.Application.Subscriber;
 using Microservices.Services.Order.Infrastructure;
 using Microservices.Shared.Services.Abstract;
 using Microservices.Shared.Services.Concrete;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Microservices.Services.Order.API
 {
@@ -92,6 +90,43 @@ namespace Microservices.Services.Order.API
                     ClockSkew = TimeSpan.Zero //Sunucu Time Zone farklýlýðýndan dolayý default olarak 5 dk ekliyor son zamana.Bunu iptal ediyoruz
                 };
             });
+
+            //RabbitMQ ile haberleþebilmek için ekledik
+            services.AddMassTransit(x =>
+            {
+                //Gelen mesajý dinleyecek olan Subscriber ýmýzý burada belirledik
+                x.AddConsumer<CreateOrderMessageCommandSubscriber>();
+
+                //Catalog tarafýndan gönderilen Event i dinleyecek sýnýfým
+                x.AddConsumer<CourseNameChangedEventSubscriber>();
+
+                //ServiceBus ayarlarýný gerçekleþtiriyoruz
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    //Default olara 5672 portundan ayaða kalktýðý için belirtmedik
+                    cfg.Host(Configuration["RabbitMQUrl"], "/", host =>
+                    {
+                        host.Username("guest");
+                        host.Password("guest");
+                    });
+
+                    //Bu Subscriber hangi kuyruðu dinleyecek
+                    cfg.ReceiveEndpoint("create-order", e => 
+                    {
+                        e.ConfigureConsumer<CreateOrderMessageCommandSubscriber>(context);
+                    });
+
+
+                    //Bu Subscriber belirli bir kuyruðu dinlemeyecek.Catalog servisinde masstransit in oluþturduðu exchange yi kendimizin burada oluþturduðu kuyruk ile dinleyecek.Sonuçta burada bir event iþlemi yapýlýyor.MassTransit in hangi Exchange yi oluþturacaðý tipe göre karar veriliyor
+                    cfg.ReceiveEndpoint("course-name-changed-event-order", e =>
+                    {
+                        e.ConfigureConsumer<CourseNameChangedEventSubscriber>(context);
+                    });
+                });
+            });
+
+            //Configurasyonlarý uyguladýk
+            services.AddMassTransitHostedService();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

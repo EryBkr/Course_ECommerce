@@ -40,7 +40,7 @@ namespace Microservices.Web
             //In memory cache kullanımı için ekledik
             services.AddMemoryCache();
 
-          
+
             //Session u ekledik
             services.AddSession();
 

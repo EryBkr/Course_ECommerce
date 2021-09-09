@@ -1,0 +1,50 @@
+﻿@model List<OrderViewModel>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Ödeme Geçmişim</h5>
+
+                @if (Model.Any())
+                {
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <th>Sipariş Numarası</th>
+                            <th>Satın Alma Tarihi</th>
+                            <th>Detaylar</th>
+                        </tr>
+                        @foreach (var order in Model)
+                        {
+                            <tr>
+                                <td>@order.Id</td>
+                                <td>@order.CreatedDate.ToShortDateString()</td>
+                                <td>
+                                    <table class="table table-striped table-sm">
+                                        <tr>
+                                            <th>Kurs Ismi</th>
+                                            <th>Kurs Fiyat</th>
+                                        </tr>
+                                        @foreach (var item in order.OrderItems)
+                                        {
+                                            <tr>
+                                                <td>@item.ProductName</td>
+                                                <td>@item.Price</td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    <div class="alert alert-info">
+                        Satın aldığınız herhangi bir kurs bulunmamaktadır
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

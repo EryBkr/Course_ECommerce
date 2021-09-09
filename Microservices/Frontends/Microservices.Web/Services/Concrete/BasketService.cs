@@ -29,6 +29,7 @@ namespace Microservices.Web.Services.Concrete
             //Servisten sepeti alıyorum
             var basket = await Get();
 
+          
             if (basket != null)
             {
                 //Ekleyeceğimiz ürün sepette mevcut mu?

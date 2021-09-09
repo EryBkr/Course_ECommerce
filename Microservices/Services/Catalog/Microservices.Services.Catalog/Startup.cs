@@ -1,3 +1,4 @@
+using MassTransit;
 using Microservices.Services.Catalog.AuthSettings;
 using Microservices.Services.Catalog.Services.Abstract;
 using Microservices.Services.Catalog.Services.Concrete;
@@ -92,6 +93,24 @@ namespace Microservices.Services.Catalog
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Microservices.Services.Catalog", Version = "v1" });
             });
+
+            //RabbitMQ ile haberleþebilmek için ekledik
+            services.AddMassTransit(x =>
+            {
+                //ServiceBus ayarlarýný gerçekleþtiriyoruz
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    //Default olara 5672 portundan ayaða kalktýðý için belirtmedik
+                    cfg.Host(Configuration["RabbitMQUrl"], "/", host =>
+                    {
+                        host.Username("guest");
+                        host.Password("guest");
+                    });
+                });
+            });
+
+            //Configurasyonlarý uyguladýk
+            services.AddMassTransitHostedService();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

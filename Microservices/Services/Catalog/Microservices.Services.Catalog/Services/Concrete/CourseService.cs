@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Mass=MassTransit; //Bu kullanım NameSpace ismini değiştirmek için uygulandı.Response dönüş tipi masstransit içerisinde de olduğundan dolayı hata alıyorduk
 using Microservices.Services.Catalog.Dtos;
 using Microservices.Services.Catalog.Models;
 using Microservices.Services.Catalog.Services.Abstract;
@@ -9,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microservices.Shared.Messages;
 
 namespace Microservices.Services.Catalog.Services.Concrete
 {
@@ -23,7 +25,11 @@ namespace Microservices.Services.Catalog.Services.Concrete
 
         private readonly IMapper _mapper;
 
-        public CourseService(IMapper mapper, IDatabaseSettings dbSettings)
+        //RabbitMQ ile haberleşebilmek için ekliyoruz
+        //Publish ibaresi genellikle Event lar için kullanılır.Birden fazla serviste değişiklik yapmak istiyorsak uygun bir yöntemdir.Her bir servisin sorumluluğu farklıdır
+        private readonly Mass.IPublishEndpoint _publishEndPoint;
+
+        public CourseService(IMapper mapper, IDatabaseSettings dbSettings, Mass.IPublishEndpoint publishEndPoint)
         {
             //MongoDb Bağlantısını oluşturdum
             var client = new MongoClient(dbSettings.ConnectionString);
@@ -38,6 +44,7 @@ namespace Microservices.Services.Catalog.Services.Concrete
             _category = database.GetCollection<Category>(dbSettings.CategoryCollectionName);
 
             _mapper = mapper;
+            _publishEndPoint = publishEndPoint;
         }
 
         public async Task<Response<List<CourseDto>>> GetAllAsync()
@@ -128,6 +135,14 @@ namespace Microservices.Services.Catalog.Services.Concrete
             //Güncelleme işlemi yapılamadıysa
             if (result==null)
                 return Response<NoContent>.Fail("Will Update Course Not Found", 404);
+
+            //Payment servisinde kullandığımız Send ten  farklı olarak kuyruk ismi belirlemedik .Send ve Publish birbirinden farklı kullanımlara sahiptir
+            //Şayet kurs isminde bir değişiklik yaparsak bu değişikliğin order servisine de yansıması için rabbitMQ ve massTransit ile datayı publish ediyoruz,order tarafında ki subscriber bu değişikliği alıp uyguluyor
+            await _publishEndPoint.Publish<CourseNameChangedEvent>(new CourseNameChangedEvent 
+            {
+                CourseId=updatedCourse.Id,
+                UpdatedName=updatedCourse.Name
+            });
 
             return Response<NoContent>.Success(204);
         }

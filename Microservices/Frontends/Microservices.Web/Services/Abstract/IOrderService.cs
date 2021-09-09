@@ -12,7 +12,7 @@ namespace Microservices.Web.Services.Abstract
         Task<OrderStatusViewModel> CreateOrder(Checkout checkout);
 
         //Asenkron İletişim (RabbitMQ)
-        Task SuspendOrder(Checkout checkout);
+        Task<OrderSuspendViewModel> SuspendOrder(Checkout checkout);
 
         //Sipariş Geçmişi
         Task<List<OrderViewModel>> GetOrder();

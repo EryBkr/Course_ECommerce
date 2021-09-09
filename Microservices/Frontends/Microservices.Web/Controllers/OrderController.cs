@@ -30,22 +30,39 @@ namespace Microservices.Web.Controllers
             return View(new Checkout());
         }
 
+        [HttpGet]
+        public async Task<IActionResult> CheckoutHistory()
+        {
+            //Geçmiş Siparişlerimi alıyorum
+            var checkouts =await _orderService.GetOrder();
+
+            return View(checkouts);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Checkout(Checkout model)
         {
-            var orderStatus = await _orderService.CreateOrder(model);
+            //Senkron iletişim örneği
+            //var orderStatus = await _orderService.CreateOrder(model);
 
-            if (!orderStatus.IsSuccessful)
+            //Asenkron iletişim örneği (RabbitMQ)
+            var orderSuspend = await _orderService.SuspendOrder(model);
+
+            if (!orderSuspend.IsSuccessful)
             {
                 var basket = await _basketService.Get();
                 ViewBag.Basket = basket.Data;
 
-                ViewBag.Error = orderStatus.Error;
+                ViewBag.Error = orderSuspend.Error;
                 return View();
             }
 
-            //Başarılı sayfasına gönderiyoruz
-            return RedirectToAction(nameof(SuccessfulCheckout), new { orderId = orderStatus.OrderId });
+            //Başarılı sayfasına gönderiyoruz (Senkron İletişim)
+            //return RedirectToAction(nameof(SuccessfulCheckout), new { orderId = orderStatus.OrderId });
+
+            //Asenkron iletişim (RabbitMQ)
+            //Temsili olarak OrderId oluşturduk.Asenkron iletişim noktasında bizler için gerekli değil
+            return RedirectToAction(nameof(SuccessfulCheckout), new { orderId = Guid.NewGuid().ToString()});
         }
 
         public IActionResult SuccessfulCheckout(int orderId)

@@ -96,9 +96,47 @@ namespace Microservices.Web.Services.Concrete
         }
 
         //Asenkron İletişim (RabbitMQ)
-        public Task SuspendOrder(Checkout checkout)
+        public async Task<OrderSuspendViewModel> SuspendOrder(Checkout checkout)
         {
-            throw new NotImplementedException();
+            var basket = await _basketService.Get();//Sepetteki dataları alıyoruz
+
+            var orderCreateInput = new CreateOrderInput
+            {
+                //Kullanıcı Id sini atadık
+                BuyerId = _identityService.GetUserId,
+                AddressDto = new AddressCreateInput { Province = checkout.Province, District = checkout.District, Line = checkout.Line, Street = checkout.Street, ZipCode = checkout.ZipCode }
+            };
+
+            //Sepet içerisinde ki Ürünleri sipariş modelimize ekliyoruz
+            basket.Data.BasketItems.ForEach(i =>
+            {
+                orderCreateInput.OrderItemDtos.Add(new OrderItemViewModel { ProductId = i.CourseId, Price = i.GetCurrentPrice, PictureUrl = "", ProductName = i.CourseName });
+            });
+
+           
+            //Ödeme servisine gidecek modelimizi oluşturuyoruz
+            var payment = new PaymentInfo()
+            {
+                CardName = checkout.CardName,
+                CardNumber = checkout.CardNumber,
+                CVV = checkout.CVV,
+                Expiration = checkout.Expiration,
+                TotalPrice = basket.Data.TotalPrice,
+                OrderDto=orderCreateInput //Order servisi içinde gerekli bilgileri Payment a göndereceğiz
+            };
+
+            //Ödeme işlemi yapılıyor
+            var responsePayment = await _paymentService.ReceivePayment(payment);
+
+            //Ödeme başarısız ise
+            if (!responsePayment)
+                return new OrderSuspendViewModel { Error = "Ödeme alınamadı", IsSuccessful = false };
+
+            //Sepeti temizledik
+            await _basketService.Delete();
+
+            //İşlem tamamlandı
+            return new OrderSuspendViewModel { IsSuccessful = true };
         }
     }
 }

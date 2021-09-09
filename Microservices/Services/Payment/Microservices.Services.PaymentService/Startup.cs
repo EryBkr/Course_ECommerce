@@ -4,19 +4,16 @@ using Microservices.Shared.Services.Concrete;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using MassTransit;
+using MassTransit.MultiBus;
 
 namespace Microservices.Services.PaymentService
 {
@@ -32,7 +29,6 @@ namespace Microservices.Services.PaymentService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             //Bütün Controller a Authorize attribute 'ni eklemiþ oldum
             services.AddControllers(opt =>
             {
@@ -74,6 +70,26 @@ namespace Microservices.Services.PaymentService
                     ClockSkew = TimeSpan.Zero //Sunucu Time Zone farklýlýðýndan dolayý default olarak 5 dk ekliyor son zamana.Bunu iptal ediyoruz
                 };
             });
+
+
+            //RabbitMQ ile haberleþebilmek için ekledik
+            services.AddMassTransit(x =>
+            {
+                //ServiceBus ayarlarýný gerçekleþtiriyoruz
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    //Default olara 5672 portundan ayaða kalktýðý için belirtmedik
+                    cfg.Host(Configuration["RabbitMQUrl"], "/", host =>
+                      {
+                          host.Username("guest");
+                          host.Password("guest");
+                      });
+                });
+            });
+
+            //Configurasyonlarý uyguladýk
+            services.AddMassTransitHostedService();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,6 +103,7 @@ namespace Microservices.Services.PaymentService
             }
 
             app.UseRouting();
+            
 
             app.UseAuthentication(); //Kimlik
             app.UseAuthorization(); //Yetkilendirme
