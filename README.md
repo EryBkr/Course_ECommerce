@@ -22,5 +22,5 @@
 * SQL Server Linux (Order Service & Ef_Core Library): `docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Password123*" -p 1444:1433 --name orderdb -d mcr.microsoft.com/mssql/server:2017-latest-ubuntu"` Connection String:`"Server=localhost,1444;Database=orderdb;User=sa;Password=Password123*"` `DbBeaver` üzerinden ulaşıyorum.Uzak bağlantı kabul ediyor (Yukarıda ki MSSQL den farklı portta ayağa kaldırdım)
 
 ## MQ EVENT
-RabbitMQ:docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmqcontainer rabbitmq:3-management (portainer ı ve servisi ayağa kaldırıyorum)
+`RabbitMQ:docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmqcontainer rabbitmq:3-management` (portainer ı ve servisi ayağa kaldırıyorum)
 
