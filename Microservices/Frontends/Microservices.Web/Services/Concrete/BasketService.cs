@@ -29,6 +29,10 @@ namespace Microservices.Web.Services.Concrete
             //Servisten sepeti alıyorum
             var basket = await Get();
 
+            //Burada algoritmik bir hata var.
+             //Henüz sepet oluşmamış ise yeni bir sepet oluşturuyorum
+                  basket.Data = new BasketViewModel();
+                basket.Data.BasketItems.Add(model);
           
             if (basket != null)
             {

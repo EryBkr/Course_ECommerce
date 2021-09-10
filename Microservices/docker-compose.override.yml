@@ -1,0 +1,158 @@
+version: "3.8" #override compose ayarlarının daha derinlikli halini içerir
+services: #Container larımı burada tanımlayacağım
+  catalogdb: #Containerlar birbirleriyle haberleşmesini servis isimleriyle sağlar
+    container_name: catalogdb #Bu containerla  hangi isimle ulaşacağız
+    restart: always #Docker açılıp kapandığında nasıl davranacak
+    ports: 
+      - "27017:27017"
+    volumes: 
+      - catalogDb_volume:/data/db
+  basketdb:
+    container_name: basketdb
+    restart: always #Docker açılıp kapandığında nasıl davranacak
+    ports: 
+      - "6379:6379"
+    volumes: 
+      - basketdb_data:/data
+  discountdb:
+    container_name: discountdb
+    restart: always #Docker açılıp kapandığında nasıl davranacak
+    ports: 
+      - "5432:5432"
+    volumes: 
+      - discount_volume:/var/lib/postgresql/data
+    environment: 
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=Password123*
+      - POSTGRES_DB=discountdb
+  identitydb:
+    container_name: identitydb
+    restart: always #Docker açılıp kapandığında nasıl davranacak
+    ports: 
+      - "1433:1433"
+    volumes: 
+       - identityDb_volume:/data/db
+    environment: 
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password123*
+  orderdb:
+    container_name: orderdb
+    restart: always #Docker açılıp kapandığında nasıl davranacak
+    ports: 
+      - 1444:1443
+    environment: 
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Password123*
+    volumes: 
+      - orderDb_volume:/data/db
+  rabbitMq:
+    container_name: rabbitMq
+    restart: always #Docker açılıp kapandığında nasıl davranacak
+    ports: 
+      - "5672:5672" #RabbitMQ Service Port
+      - "15672:15672" #UI Management Port
+  portainer:
+    container_name: portainer
+    command: -H unix:///var/run/docker.sock
+    restart: always
+    ports: 
+      - "8000:8000"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+  catalog.api:
+    container_name: catalog_api
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RabbitMQUrl=rabbitMq #appsettins içerisinde bulunan ayarları düzenlemem gerekiyor rabbitMq benim servis ismim
+      - DatabaseSettings:ConnectionString=mongodb://catalogdb:27017 #localhost ibarelerini compose içerisinde ki servis isimleriyle değiştirmem gerekiyor.Container iletişimlerinde localhost diye bir kavram yoktur
+    ports: 
+      - 5011:80 #Container içerisinden EXPOSE 80 ile ayağa kaldırmıştık
+    depends_on: 
+      - catalogdb #Bu container ayağa kalkmadan önce bu servis ayakta olmalı
+  auth.api:
+    container_name: auth_api
+    restart: on-failure #hata durumunda kendisini restart etsin.depends_on desek bile önce identitydb çalışmaya başlasa bile hazır duruma gelmesini beklemez
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:DefaultConnection=Server=identitydb,1433;Database=identitydb;User=sa;Password=Password123*" #localhost ibarelerini compose içerisinde ki servis isimleriyle değiştirmem gerekiyor.Container iletişimlerinde localhost diye bir kavram yoktur
+    ports: 
+      - 5001:80 #Container içerisinden EXPOSE 80 ile ayağa kaldırmıştık
+    depends_on: 
+      - identitydb #Bu container ayağa kalkmadan önce bu servis ayakta olmalı
+  basket.api:
+    container_name: basket_api
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "RedisSettings:Host=basketdb" #localhost ibarelerini compose içerisinde ki servis isimleriyle değiştirmem gerekiyor.Container iletişimlerinde localhost diye bir kavram yoktur
+      - "RedisSettings:Port=6379" #Port numarasını da basketdb ye göre belirledik
+    ports: 
+      - 5013:80 #Container içerisinden EXPOSE 80 ile ayağa kaldırmıştık
+    depends_on: 
+      - basketdb #Bu container ayağa kalkmadan önce bu servis ayakta olmalı
+  photo.api:
+    container_name: photo_api
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports: 
+      - 5012:80 #Container içerisinden EXPOSE 80 ile ayağa kaldırmıştık
+    volumes: 
+      - type: bind #volume tipi (datalar ya da bu durumda resimler bilgisayarın fiziksel klasöründe saklanacak)
+        source: C:\Users\Blackerback\OneDrive\Masaüstü\photos #Fotoğraflar hangi fiziksel klasörde saklansın?
+        target: /app/wwwroot/photos #Nereye yüklenen fotoğraflar fiziksel klasöre aktarılsın
+  discount.api:
+    container_name: discount_api
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:PostgreSql=User ID=admin;Password=Password123*;Server=discountdb;Port=5432;Database=discountdb;Integrated Security=true;Pooling=true;" #localhost ibarelerini compose içerisinde ki servis isimleriyle değiştirmem gerekiyor.Container iletişimlerinde localhost diye bir kavram yoktur
+    ports: 
+      - 5014:80 #Container içerisinden EXPOSE 80 ile ayağa kaldırmıştık
+    depends_on: 
+      - discountdb #Bu container ayağa kalkmadan önce bu servis ayakta olmalı
+  payment.api:
+    container_name: payment_api
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RabbitMQUrl=rabbitMq #appsettins içerisinde bulunan ayarları düzenlemem gerekiyor rabbitMq benim servis ismim
+    ports: 
+      - 5016:80 #Container içerisinden EXPOSE 80 ile ayağa kaldırmıştık
+    depends_on: 
+      - rabbitMq #Bu container ayağa kalkmadan önce bu servis ayakta olmalı
+  order.api:
+    container_name: order_api
+    restart: on-failure #hata durumunda kendisini restart etsin.depends_on desek bile önce identitydb çalışmaya başlasa bile hazır duruma gelmesini beklemez
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:DefaultConnection=Server=orderdb,1433;Database=orderdb;User=sa;Password=Password123*" #localhost diye bir kavram yok.Servislere servis isimleriyle ulaşabiliyoruz Portumuz dış dünyata 1444 portunu açacak ama container içerisinde 1433 portunu kullanacak
+      - RabbitMQUrl=rabbitMq #appsettins içerisinde bulunan ayarları düzenlemem gerekiyor rabbitMq benim servis ismim
+    ports: 
+      - 5015:80 #Container içerisinden EXPOSE 80 ile ayağa kaldırmıştık
+    depends_on: 
+      - rabbitMq #Bu container ayağa kalkmadan önce bu servis ayakta olmalı
+      - orderdb
+  gateway.api:
+    container_name: gateway_api
+    environment: 
+      - ASPNETCORE_ENVIRONMENT=Production #configuration.production.json dosyasına göre hareket etmesi için bu şekilde tanımladık
+    ports: 
+      - 5000:80 #Container içerisinden EXPOSE 80 ile ayağa kaldırmıştık
+  aspnetcore.web:
+    container_name: aspnetcore_web
+    environment: #gateway ve auth url lerini container service ismine göre düzenledim fakat photo stock için bu geçerli değil.Ona dış dünyadan erişmem gerekiyor ki resimler client tarafında gözüksün
+      - ASPNETCORE_ENVIRONMENT=Development #configuration.production.json dosyasına göre hareket etmesi için bu şekilde tanımladık
+      - "ServiceApiSettings:BaseUri=http://gateway.api"
+      - "ServiceApiSettings:AuthUri=http://auth.api"
+    ports: 
+      - 5010:80 #Container içerisinden EXPOSE 80 ile ayağa kaldırmıştık
+    depends_on:  #diğer servisler çalışacak ki client tarafı sorunsuz çalışsın
+      - gateway.api
+      - auth.api
+      - catalog.api
+      - basket.api
+      - discount.api
+      - order.api
+      - payment.api
+      - photo.api
+
+    

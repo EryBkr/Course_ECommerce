@@ -1,0 +1,71 @@
+version: "3.8" #Docker Compose bir tool ve bunun da versiyonları mevcut
+services: #Container larımı burada tanımlayacağım
+  catalogdb: #Containerlar birbirleriyle haberleşmesini servis isimleriyle sağlar
+    image: mongo #Mongo Imajını kullanıyorum
+  basketdb:
+    image: redis
+  discountdb:
+    image: postgres
+  identitydb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+  orderdb:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+  rabbitMq:
+    image: rabbitmq:3-management
+  portainer:
+    image: portainer/portainer
+  catalog.api:
+    image: catalog_api_image
+    build: 
+      context: . #docker compose nin yerini belirttim (root file)
+      dockerfile: Services/Catalog/Microservices.Services.Catalog/Dockerfile #Dockerfile path
+  auth.api:
+    image: auth_api_image
+    build: 
+      context: . #docker compose nin yerini belirttim (root file)
+      dockerfile: Services/Microservices.Services.AuthServer/Dockerfile #Dockerfile path/Dockerfile #Dockerfile path  
+  basket.api:
+    image: basket_api_image
+    build: 
+      context: . #docker compose nin yerini belirttim (root file)
+      dockerfile: Services/Basket/Microservices.Services.BasketServer/Dockerfile #Dockerfile path/Dockerfile #Dockerfile path
+  photo.api:
+    image: photo_api_image
+    build: 
+      context: . #docker compose nin yerini belirttim (root file)
+      dockerfile: Services/PhotoStock/Microservices.Services.PhotoStock/Dockerfile #Dockerfile path/Dockerfile #Dockerfile path
+  discount.api:
+    image: discount_api_image
+    build: 
+      context: . #docker compose nin yerini belirttim (root file)
+      dockerfile: Services/Discount/Microservices.Services.DiscountServer/Dockerfile #Dockerfile path/Dockerfile #Dockerfile path
+  payment.api:
+    image: payment_api_image
+    build: 
+      context: . #docker compose nin yerini belirttim (root file)
+      dockerfile: Services/Payment/Microservices.Services.PaymentService/Dockerfile #Dockerfile path/Dockerfile #Dockerfile path
+  order.api:
+    image: order_api_image
+    build: 
+      context: . #docker compose nin yerini belirttim (root file)
+      dockerfile: Services/Order/Microservices.Services.Order.API/Dockerfile #Dockerfile path/Dockerfile #Dockerfile path
+  gateway.api:
+    image: gateway_api_image
+    build: 
+      context: . #docker compose nin yerini belirttim (root file)
+      dockerfile: Gateways/Microservices.Gateway/Dockerfile #Dockerfile path/Dockerfile #Dockerfile path
+  aspnetcore.web:
+    image: aspnetcore_web_image
+    build: 
+      context: . #docker compose nin yerini belirttim (root file)
+      dockerfile: Frontends/Microservices.Web/Dockerfile #Dockerfile path/Dockerfile #Dockerfile path
+  
+
+    
+volumes: #Container lar stop edildiğinde dataların yok olmaması için ekledik
+  catalogDb_volume:
+  discount_volume:
+  identityDb_volume:
+  orderDb_volume:
+  portainer_data:
+  basketdb_data:
